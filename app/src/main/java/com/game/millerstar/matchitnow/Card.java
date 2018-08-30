@@ -3,7 +3,7 @@ package com.game.millerstar.matchitnow;
 public class Card {
 
     // class members
-    private int crardId;
+//    private int crardId;
     private String imageURL;
     private boolean isExposed;
     private int[] possition;

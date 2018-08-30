@@ -1,24 +1,26 @@
 package com.game.millerstar.matchitnow;
 
+import java.util.ArrayList;
+
 public class Board {
 
     // class members
     private int colNumber;
     private int rowNumber;
+    private int pairNum;
     Level boardLevel;
     private boolean isSolved;
     private int numOfMatches;
     private double timeScore;
+    private ArrayList<Card> cardsBoard;
 
-    // constructors
-    public Board() {
-        this.boardLevel = Level.BEGINNER;
-        generateBoard(this.boardLevel);
-    }
-
+    // constructor
     public Board(Level level) {
         this.boardLevel = level;
+        this.cardsBoard = new ArrayList<>();
         generateBoard(this.boardLevel);
+        generatePairs(this.getPairNum());
+
     }
 
     // getters & Setters
@@ -46,11 +48,27 @@ public class Board {
         return timeScore;
     }
 
+    public int getPairNum() {
+        return pairNum;
+    }
+
+    public ArrayList<Card> getCardsBoard() {
+        return cardsBoard;
+    }
+
     // methods
+    public void generatePairs(int pairNumber) {
+        for (int i = 0; i <pairNumber * 2 ; i++) {
+            Card card = new Card("imageURL");
+            cardsBoard.add(card);
+        }
+    }
+
     private void generateBoard(Level level) {
         this.timeScore = 0.0;
         this.numOfMatches = 0;
         this.isSolved = false;
+        this.pairNum = 0;
 
         switch (level) {
             case EXPERT:
@@ -70,6 +88,6 @@ public class Board {
                 this.rowNumber = 3;
                 break;
         }
+        this.pairNum = (this.colNumber * this.rowNumber) / 2;
     }
-
 }
