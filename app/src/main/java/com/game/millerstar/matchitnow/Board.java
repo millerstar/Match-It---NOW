@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Board {
 
     // class members
-    private int colNumber;
-    private int rowNumber;
-    private int pairNum;
-    Level boardLevel;
+//    private int colNumber;
+//    private int rowNumber;
+//    private int pairNum;
+    private Level boardLevel;
     private boolean isSolved;
     private int numOfMatches;
     private double timeScore;
@@ -17,18 +17,24 @@ public class Board {
     // constructor
     public Board(Level level) {
         this.boardLevel = level;
+        this.timeScore = 0.0;
+        this.numOfMatches = 0;
+        this.isSolved = false;
+
         this.cards = new ArrayList<>();
-        generateBoard(this.boardLevel);
+//        this.colNumber = level.getNumberOfColumns();
+//        this.rowNumber = level.getNumberOfRows();
+//        generateBoard(this.boardLevel);
 //        generatePairs(this.getPairNum());
     }
 
     // getters & Setters
     public int getColNumber() {
-        return colNumber;
+        return boardLevel.getNumberOfColumns();
     }
 
     public int getRowNumber() {
-        return rowNumber;
+        return boardLevel.getNumberOfRows();
     }
 
     public Level getBoardLevel() {
@@ -47,10 +53,6 @@ public class Board {
         return timeScore;
     }
 
-    public int getPairNum() {
-        return pairNum;
-    }
-
     public ArrayList<Card> getCards() {
         return cards;
     }
@@ -63,28 +65,28 @@ public class Board {
         }
     }
 
-    private void generateBoard(Level level) {
-        this.timeScore = 0.0;
-        this.numOfMatches = 0;
-        this.isSolved = false;
-
-        switch (level) {
-            case EXPERT:
-                this.colNumber = level.getColumnAsInt();
-                this.rowNumber = level.getRowAsInt();
-                break;
-            case INTERMEDIATE:
-                this.colNumber = level.getColumnAsInt();
-                this.rowNumber = level.getRowAsInt();
-                break;
-            case BEGINNER:
-                this.colNumber = level.getColumnAsInt();
-                this.rowNumber = level.getRowAsInt();
-                break;
-            default:
-                this.colNumber = level.getColumnAsInt();
-                this.rowNumber = level.getRowAsInt();
-                break;
-        }
-    }
+//    private void generateBoard(Level level) {
+//        this.timeScore = 0.0;
+//        this.numOfMatches = 0;
+//        this.isSolved = false;
+//
+//        switch (level) {
+//            case EXPERT:
+//                this.colNumber = level.getNumberOfColumns();
+//                this.rowNumber = level.getNumberOfRows();
+//                break;
+//            case INTERMEDIATE:
+//                this.colNumber = level.getNumberOfColumns();
+//                this.rowNumber = level.getNumberOfRows();
+//                break;
+//            case BEGINNER:
+//                this.colNumber = level.getNumberOfColumns();
+//                this.rowNumber = level.getNumberOfRows();
+//                break;
+//            default:
+//                this.colNumber = level.getNumberOfColumns();
+//                this.rowNumber = level.getNumberOfRows();
+//                break;
+//        }
+//    }
 }

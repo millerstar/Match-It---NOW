@@ -12,11 +12,11 @@ public enum Level {
         this.level[1] = level[1];
     }
 
-    public int getColumnAsInt() {
+    public int getNumberOfColumns() {
         return level[0];
     }
 
-    public int getRowAsInt() {
+    public int getNumberOfRows() {
         return level[1];
     }
 }

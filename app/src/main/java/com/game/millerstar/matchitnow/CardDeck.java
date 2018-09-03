@@ -1,6 +1,7 @@
 package com.game.millerstar.matchitnow;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CardDeck {
 
@@ -11,19 +12,18 @@ public class CardDeck {
     // constructor
     public CardDeck(Level level) {
         cardDeck = new ArrayList<>();
-        this.deckSize = level.getColumnAsInt() * level.getRowAsInt();
-    }
-
-    // getters & Setters
-    public ArrayList<Card> getCardDeck() {
-        return cardDeck;
+        this.deckSize = level.getNumberOfColumns() * level.getNumberOfRows();
     }
 
     // methods
-    public void generateCardDeck() {
+    int[] myArray = new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6};
+
+    public ArrayList<Card> generateCardDeck() {
         for (int i = 0; i < this.deckSize; i++) {
-            Card card = new Card("imageURL");
+            Card card = new Card("imageURL" + myArray[i]);
             cardDeck.add(card);
         }
+        Collections.shuffle(cardDeck);
+        return cardDeck;
     }
 }
