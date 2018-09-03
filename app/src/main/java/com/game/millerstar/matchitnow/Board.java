@@ -12,15 +12,14 @@ public class Board {
     private boolean isSolved;
     private int numOfMatches;
     private double timeScore;
-    private ArrayList<Card> cardsBoard;
+    private ArrayList<Card> cards;
 
     // constructor
     public Board(Level level) {
         this.boardLevel = level;
-        this.cardsBoard = new ArrayList<>();
+        this.cards = new ArrayList<>();
         generateBoard(this.boardLevel);
-        generatePairs(this.getPairNum());
-
+//        generatePairs(this.getPairNum());
     }
 
     // getters & Setters
@@ -52,15 +51,15 @@ public class Board {
         return pairNum;
     }
 
-    public ArrayList<Card> getCardsBoard() {
-        return cardsBoard;
+    public ArrayList<Card> getCards() {
+        return cards;
     }
 
     // methods
     public void generatePairs(int pairNumber) {
         for (int i = 0; i <pairNumber * 2 ; i++) {
             Card card = new Card("imageURL");
-            cardsBoard.add(card);
+            cards.add(card);
         }
     }
 
@@ -68,26 +67,24 @@ public class Board {
         this.timeScore = 0.0;
         this.numOfMatches = 0;
         this.isSolved = false;
-        this.pairNum = 0;
 
         switch (level) {
             case EXPERT:
-                this.colNumber = 7;
-                this.rowNumber = 5;
+                this.colNumber = level.getColumnAsInt();
+                this.rowNumber = level.getRowAsInt();
                 break;
             case INTERMEDIATE:
-                this.colNumber = 5;
-                this.rowNumber = 4;
+                this.colNumber = level.getColumnAsInt();
+                this.rowNumber = level.getRowAsInt();
                 break;
             case BEGINNER:
-                this.colNumber = 4;
-                this.rowNumber = 3;
+                this.colNumber = level.getColumnAsInt();
+                this.rowNumber = level.getRowAsInt();
                 break;
             default:
-                this.colNumber = 4;
-                this.rowNumber = 3;
+                this.colNumber = level.getColumnAsInt();
+                this.rowNumber = level.getRowAsInt();
                 break;
         }
-        this.pairNum = (this.colNumber * this.rowNumber) / 2;
     }
 }

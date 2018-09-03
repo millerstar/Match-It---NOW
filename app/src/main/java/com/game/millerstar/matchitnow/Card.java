@@ -6,18 +6,18 @@ public class Card {
 //    private int crardId;
     private String imageURL;
     private boolean isExposed;
-    private int[] possition;
+    private int[] position;
 
     // constructor
     public Card(String imageURL) {
         this.imageURL = imageURL;
-        this.possition = new int[2];
+//        this.position = new int[2];
         this.isExposed = false;
     }
 
     // getters & setters
-    public int[] getPossition() {
-        return possition;
+    public int[] getPosition() {
+        return position;
     }
 
     public boolean isExposed() {
@@ -28,9 +28,9 @@ public class Card {
         return imageURL;
     }
 
-    public void setPossition(int[] possition) {
-        this.possition[0] = possition[0];
-        this.possition[1] = possition[1];
+    public void setPosition(int[] position) {
+        this.position[0] = position[0];
+        this.position[1] = position[1];
     }
 
     public void setExposed(boolean exposed) {

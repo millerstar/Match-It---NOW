@@ -16,20 +16,24 @@ public class BoardUnitTest {
     }
 
     @Test
-    public void board_isBoardSolved_false() {
-        Board intermediateBoard = new Board(Level.INTERMEDIATE);
-        boolean isSolved = intermediateBoard.isSolved();
+    public void cardDeck_beginnerLevel_generateBeginnerDeck() {
+        Board beginnerBoard = new Board(Level.BEGINNER);
+        CardDeck beginnerCardDeck = new CardDeck(beginnerBoard.getBoardLevel());
+        beginnerCardDeck.generateCardDeck();
 
-        assertFalse("The board is already solved", isSolved);
+        int beginnerDeckSize = beginnerCardDeck.getCardDeck().size();
+
+        assertEquals("Beginner deck size in incorrect", 12, beginnerDeckSize);
     }
 
-    @Test
+
+   /* @Test
     public void board_generat12eCards_beginnerLevel() {
         Board beginnerBoard = new Board(Level.BEGINNER);
-        int numOfCards = beginnerBoard.getCardsBoard().size();
+        int numOfCards = beginnerBoard.getCards().size();
 
         assertEquals("Number of cards is incorrect",12,numOfCards);
-    }
+    }*/
 
 
 }
