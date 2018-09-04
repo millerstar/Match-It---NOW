@@ -26,4 +26,8 @@ public class CardDeck {
         Collections.shuffle(cardDeck);
         return cardDeck;
     }
+
+    public boolean compareTwoCards(Card firstCard, Card secondCard) {
+        return firstCard.getImageURL().equalsIgnoreCase(secondCard.getImageURL());
+    }
 }

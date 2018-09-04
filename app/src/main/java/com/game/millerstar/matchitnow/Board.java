@@ -12,7 +12,7 @@ public class Board {
     private boolean isSolved;
     private int numOfMatches;
     private double timeScore;
-    private ArrayList<Card> cards;
+    private ArrayList<Card> gameCards;
 
     // constructor
     public Board(Level level) {
@@ -20,8 +20,7 @@ public class Board {
         this.timeScore = 0.0;
         this.numOfMatches = 0;
         this.isSolved = false;
-
-        this.cards = new ArrayList<>();
+        this.gameCards = new ArrayList<>();
 //        this.colNumber = level.getNumberOfColumns();
 //        this.rowNumber = level.getNumberOfRows();
 //        generateBoard(this.boardLevel);
@@ -54,15 +53,13 @@ public class Board {
     }
 
     public ArrayList<Card> getCards() {
-        return cards;
+        return gameCards;
     }
 
     // methods
-    public void generatePairs(int pairNumber) {
-        for (int i = 0; i <pairNumber * 2 ; i++) {
-            Card card = new Card("imageURL");
-            cards.add(card);
-        }
+    public void initializeGame() {
+        CardDeck cardDeck = new CardDeck(boardLevel);
+        gameCards = cardDeck.generateCardDeck();
     }
 
 //    private void generateBoard(Level level) {

@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import static org.junit.Assert.*;
 
 public class BoardUnitTest {
@@ -22,8 +21,7 @@ public class BoardUnitTest {
 
     @Test
     public void cardDeck_beginnerLevel_generateBeginnerDeck12Cards() {
-        Board beginnerBoard = new Board(Level.BEGINNER);
-        CardDeck beginnerCardDeck = new CardDeck(beginnerBoard.getBoardLevel());
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
         ArrayList<Card> cardsDeckArray = beginnerCardDeck.generateCardDeck();
 
         assertEquals("Beginner deck size in incorrect", 12, cardsDeckArray.size());
@@ -31,8 +29,7 @@ public class BoardUnitTest {
 
     @Test
     public void cardDeck_beginnerLevel_isValidDeck() {
-        Board beginnerBoard = new Board(Level.BEGINNER);
-        CardDeck beginnerCardDeck = new CardDeck(beginnerBoard.getBoardLevel());
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
         ArrayList<Card> cardsDeckArray = beginnerCardDeck.generateCardDeck();
         HashMap<String, Integer> cardDeckMap = new HashMap<>();
 
@@ -47,6 +44,28 @@ public class BoardUnitTest {
         for (Integer val : cardDeckMap.values()) {
             assertTrue("Number of card pairs is incorrect",val == 2);
         }
+    }
+
+    @Test
+    public void cardDeck_compare2EqualCards() {
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
+        Card card1 = new Card("myImageURL");
+        Card card2 = new Card("myImageURL");
+
+        boolean isEqual = beginnerCardDeck.compareTwoCards(card1,card2);
+
+        assertTrue("The pair of cards is not equal",isEqual);
+    }
+
+    @Test
+    public void cardDeck_compare2UnequalCards() {
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
+        Card card1 = new Card("firstImageURL");
+        Card card2 = new Card("secondImageURL");
+
+        boolean isEqual = beginnerCardDeck.compareTwoCards(card1,card2);
+
+        assertFalse("The pair of cards is equal",isEqual);
     }
 
 
