@@ -16,9 +16,10 @@ public class CardDeck {
     }
 
     // methods
-    int[] myArray = new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6};
+
 
     public ArrayList<Card> generateCardDeck() {
+        int[] myArray = new int[]{1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6}; // temp line
         for (int i = 0; i < this.deckSize; i++) {
             Card card = new Card("imageURL" + myArray[i]);
             cardDeck.add(card);
