@@ -5,41 +5,22 @@ import java.util.ArrayList;
 public class Board {
 
     // class members
-//    private int colNumber;
-//    private int rowNumber;
-//    private int pairNum;
-    private Level boardLevel;
     private boolean isSolved;
     private int numOfMatches;
     private double timeScore;
-    private ArrayList<Card> gameCards;
+    private ArrayList<Card> cardDeck;
 
     // constructor
-    public Board(Level level) {
-        this.boardLevel = level;
+    public Board(ArrayList<Card> cardDeck) {
         this.timeScore = 0.0;
         this.numOfMatches = 0;
         this.isSolved = false;
-        this.gameCards = new ArrayList<>();
-//        this.colNumber = level.getNumberOfColumns();
-//        this.rowNumber = level.getNumberOfRows();
-//        generateBoard(this.boardLevel);
-//        generatePairs(this.getPairNum());
+        this.cardDeck = cardDeck;
+
+//        boolean equals = this.cardDeck.get(0).equals(this.cardDeck.get(10));
     }
 
     // getters & Setters
-    public int getColNumber() {
-        return boardLevel.getNumberOfColumns();
-    }
-
-    public int getRowNumber() {
-        return boardLevel.getNumberOfRows();
-    }
-
-    public Level getBoardLevel() {
-        return boardLevel;
-    }
-
     public boolean isSolved() {
         return isSolved;
     }
@@ -53,37 +34,17 @@ public class Board {
     }
 
     public ArrayList<Card> getCards() {
-        return gameCards;
+        return cardDeck;
     }
 
     // methods
-    public void initializeGame() {
-        CardDeck cardDeck = new CardDeck(boardLevel);
-        gameCards = cardDeck.generateCardDeck();
+    // TODO: activate board start timer
+    public void startGame() {
+
     }
 
-//    private void generateBoard(Level level) {
-//        this.timeScore = 0.0;
-//        this.numOfMatches = 0;
-//        this.isSolved = false;
-//
-//        switch (level) {
-//            case EXPERT:
-//                this.colNumber = level.getNumberOfColumns();
-//                this.rowNumber = level.getNumberOfRows();
-//                break;
-//            case INTERMEDIATE:
-//                this.colNumber = level.getNumberOfColumns();
-//                this.rowNumber = level.getNumberOfRows();
-//                break;
-//            case BEGINNER:
-//                this.colNumber = level.getNumberOfColumns();
-//                this.rowNumber = level.getNumberOfRows();
-//                break;
-//            default:
-//                this.colNumber = level.getNumberOfColumns();
-//                this.rowNumber = level.getNumberOfRows();
-//                break;
-//        }
-//    }
+    // TODO: clear board data
+    public void clearBoard() {
+
+    }
 }

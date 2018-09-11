@@ -1,7 +1,22 @@
 package com.game.millerstar.matchitnow;
 
 public enum Level {
-    BEGINNER(new int[]{4, 3}),
+
+    BEGINNER (12),
+    INTERMEDIATE (20),
+    EXPERT (35);
+
+    private final int numOfCards;
+
+    Level(int numOfCards) {
+        this.numOfCards = numOfCards;
+    }
+
+    public int getNumOfCards() {
+        return numOfCards;
+    }
+
+   /* BEGINNER(new int[]{4, 3}),
     INTERMEDIATE(new int[]{5, 4}),
     EXPERT(new int[]{7, 5});
 
@@ -18,5 +33,5 @@ public enum Level {
 
     public int getNumberOfRows() {
         return level[1];
-    }
+    }*/
 }

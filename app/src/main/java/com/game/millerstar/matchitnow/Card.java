@@ -3,12 +3,12 @@ package com.game.millerstar.matchitnow;
 public class Card {
 
     // class members
-    private String imageURL;
+    private int imageId;
     private boolean isExposed;
 
     // constructor
-    public Card(String imageURL) {
-        this.imageURL = imageURL;
+    public Card(int imageId) {
+        this.imageId = imageId;
         this.isExposed = false;
     }
 
@@ -17,16 +17,26 @@ public class Card {
         return isExposed;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public int getImageId() {
+        return imageId;
     }
 
     public void setExposed(boolean exposed) {
         isExposed = exposed;
     }
 
-    // METHODS
+    // methods
     public void flip() {
 
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this) return true;
+        if(!(obj instanceof Card)) return false;
+
+        Card card = (Card) obj;
+
+        return card.imageId == this.imageId;
     }
 }
