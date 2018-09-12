@@ -7,13 +7,23 @@ import static org.junit.Assert.*;
 public class BoardUnitTest {
 
     @Test
-    public void board_beginnerLevel_deck_of_12_cards() {
+    public void board_updateDiscrepancy_score() {
         CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
         Board beginnerBoard = new Board(beginnerCardDeck.getCardDeck());
 
-        int numOfCards = beginnerBoard.getCards().size();
+        beginnerBoard.updateScore(false);
+        assertEquals("",0,beginnerBoard.getNumOfMatches());
+    }
 
-        assertEquals("Column Number is incorrect", 12, numOfCards);
+    @Test
+    public void board_update_score() {
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
+        Board beginnerBoard = new Board(beginnerCardDeck.getCardDeck());
+
+        beginnerBoard.updateScore(true);
+        beginnerBoard.updateScore(true);
+
+        assertEquals("",2,beginnerBoard.getNumOfMatches());
     }
 
 }

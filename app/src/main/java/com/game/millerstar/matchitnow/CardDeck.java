@@ -1,12 +1,19 @@
 package com.game.millerstar.matchitnow;
 
+import android.support.annotation.VisibleForTesting;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class CardDeck {
 
+    // For testing only!!!!!
+    private static long SEED = -1;
+
     // class members
-    private ArrayList<Card> cardDeck;
+    private List<Card> cardDeck;
     private int deckSize;
 
     // constructor
@@ -17,19 +24,29 @@ public class CardDeck {
     }
 
     // getters
-    public ArrayList<Card> getCardDeck() {
+    public List<Card> getCardDeck() {
         return cardDeck;
+    }
+
+    @VisibleForTesting
+    static void setRandomSeed(long seed){
+        SEED = seed;
     }
 
     // methods
-    private ArrayList<Card> generateCardDeck() {
+    private List<Card> generateCardDeck() {
         for (int i = 0; i < this.deckSize; i++) {
-            Card card = new Card(R.drawable.chess_card_image);
+            Card card = new Card(i);
             cardDeck.add(card);
         }
-        Collections.shuffle(cardDeck);
+
+        shuffleCards(cardDeck);
         return cardDeck;
     }
 
+    private void shuffleCards(List<Card> cardDeck){
+        Random rand = SEED > 0 ? new Random(SEED) : new Random();
 
+        Collections.shuffle(cardDeck, rand);
+    }
 }

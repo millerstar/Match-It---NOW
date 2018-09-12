@@ -1,6 +1,6 @@
 package com.game.millerstar.matchitnow;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
 
@@ -8,10 +8,10 @@ public class Board {
     private boolean isSolved;
     private int numOfMatches;
     private double timeScore;
-    private ArrayList<Card> cardDeck;
+    private List<Card> cardDeck;
 
     // constructor
-    public Board(ArrayList<Card> cardDeck) {
+    public Board(List<Card> cardDeck) {
         this.timeScore = 0.0;
         this.numOfMatches = 0;
         this.isSolved = false;
@@ -33,7 +33,7 @@ public class Board {
         return timeScore;
     }
 
-    public ArrayList<Card> getCards() {
+    public List<Card> getCards() {
         return cardDeck;
     }
 
@@ -43,8 +43,10 @@ public class Board {
 
     }
 
-    // TODO: clear board data
-    public void clearBoard() {
 
+    public void updateScore (boolean isMatch) {
+        if (isMatch) {
+            this.numOfMatches ++;
+        }
     }
 }
