@@ -14,7 +14,6 @@ import static com.google.common.truth.Truth.assertThat;
 
 
 public class CardDeckUnitTest {
-    private Resources resources;
     @Before
     public void setUp(){
         CardDeck.setRandomSeed(15L); // Shuffle array will be the same for all tests
@@ -22,7 +21,7 @@ public class CardDeckUnitTest {
 
     @Test
     public void cardDeck_beginnerLevel_generateBeginnerDeck12Cards() {
-        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER, resources);
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
         List<Card> cardsArray = beginnerCardDeck.getCardDeck();
 
         assertEquals("Beginner deck size in incorrect", Level.BEGINNER.getNumOfCards(), cardsArray.size());
@@ -30,7 +29,7 @@ public class CardDeckUnitTest {
 
     @Test
     public void cardDeck_beginnerLevel_TwoConsecutiveCardsAreEqualInTheGeneratedCardsArray() {
-        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER, resources);
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
         List<Card> cardsArray = beginnerCardDeck.getCardDeck();
 
         boolean isEqual = cardsArray.get(0).equals(cardsArray.get(1));
@@ -55,7 +54,7 @@ public class CardDeckUnitTest {
         expected.add(new Card(0));
         expected.add(new Card(9));
 
-        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER, resources);
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
         List<Card> cardsArray = beginnerCardDeck.getCardDeck();
 
         assertThat(cardsArray).containsExactlyElementsIn(expected).inOrder();

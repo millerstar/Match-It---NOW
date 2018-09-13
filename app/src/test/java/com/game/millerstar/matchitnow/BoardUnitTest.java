@@ -1,15 +1,13 @@
 package com.game.millerstar.matchitnow;
 
-import android.content.res.Resources;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BoardUnitTest {
-    private Resources resources;
 
     @Test
     public void board_updateDiscrepancy_score() {
-        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER, resources);
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
         Board beginnerBoard = new Board(beginnerCardDeck.getCardDeck());
 
         beginnerBoard.updateScore(false);
@@ -18,7 +16,7 @@ public class BoardUnitTest {
 
     @Test
     public void board_update_score() {
-        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER, resources);
+        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
         Board beginnerBoard = new Board(beginnerCardDeck.getCardDeck());
 
         beginnerBoard.updateScore(true);
