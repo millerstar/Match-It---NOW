@@ -51,9 +51,12 @@ public class CardDeck {
 
     // methods
     private List<Card> generateCardDeck() throws NoSuchFieldException, IllegalAccessException {
-        for (int i = 0; i < this.deckSize; i++) {
-            Card card = new Card(getDrawable(drawableArray[i]));
-            cardDeck.add(card);
+        ArrayList<Integer> randomCardsIndexList = generateRandomIndexCardsList(this.deckSize / 2);
+        for (int i = 0; i < this.deckSize / 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                Card card = new Card(getDrawable(drawableArray[randomCardsIndexList.get(i)]));
+                cardDeck.add(card);
+            }
         }
 
         shuffleCards(cardDeck);
@@ -68,6 +71,22 @@ public class CardDeck {
 
     private int getDrawable(String name) throws NoSuchFieldException, IllegalAccessException {
         return R.drawable.class.getField(name).getInt(null);
+    }
+
+    private ArrayList<Integer> generateRandomIndexCardsList(int numOfPairs) {
+        ArrayList<Integer> cardsIndexList = new ArrayList<>();
+        int randomIndex = generateRandomCardIndex();
+        while (cardsIndexList.size() < numOfPairs) {
+            if (!cardsIndexList.contains(randomIndex)) {
+                cardsIndexList.add(randomIndex);
+            }
+            randomIndex = generateRandomCardIndex();
+        }
+        return cardsIndexList;
+    }
+
+    private int generateRandomCardIndex() {
+        return (int) (Math.random() * drawableArray.length);
     }
 
 }
