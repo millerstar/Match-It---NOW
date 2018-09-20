@@ -32,14 +32,12 @@ public class CardDeck {
         this.cardDeck = new ArrayList<>();
         try {
             this.cardDeck = this.generateCardDeck();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
 
-    // getters
+    // getters & setters
     public List<Card> getCardDeck() {
         return cardDeck;
     }
@@ -54,7 +52,7 @@ public class CardDeck {
         ArrayList<Integer> randomCardsIndexList = generateRandomIndexCardsList(this.deckSize / 2);
         for (int i = 0; i < this.deckSize / 2; i++) {
             for (int j = 0; j < 2; j++) {
-                Card card = new Card(getDrawable(drawableArray[randomCardsIndexList.get(i)]));
+                Card card = new Card(getDrawableId(drawableArray[randomCardsIndexList.get(i)]));
                 cardDeck.add(card);
             }
         }
@@ -69,7 +67,7 @@ public class CardDeck {
         Collections.shuffle(cardDeck, rand);
     }
 
-    private int getDrawable(String name) throws NoSuchFieldException, IllegalAccessException {
+    private int getDrawableId(String name) throws NoSuchFieldException, IllegalAccessException {
         return R.drawable.class.getField(name).getInt(null);
     }
 
