@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,10 +14,10 @@ import static com.google.common.truth.Truth.assertThat;
 
 
 public class CardDeckUnitTest {
-    @Before
-    public void setUp() {
-        CardDeck.setRandomSeed(15L); // Shuffle array will be the same for all tests
-    }
+//    @Before
+//    public void setUp() {
+//        CardDeck.setRandomSeed(15L); // Shuffle array will be the same for all tests
+//    }
 
     @Test
     public void cardDeck_beginnerLevel_generateBeginnerDeck12Cards() {
@@ -55,29 +54,29 @@ public class CardDeckUnitTest {
         List<Card> cardsArray1 = beginnerCardDeck1.getCardDeck();
         List<Card> cardsArray2 = beginnerCardDeck2.getCardDeck();
 
-        assertTrue("The card deck is not unique", cardsArray1 != cardsArray2);
+        assertTrue("The card deck is not unique", !cardsArray1.equals(cardsArray2));
     }
 
-    @Test
-    public void cardDeck_beginnerLevel_TwoConsecutiveCardsAreEqualInTheGeneratedCardsArray() {
-        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
-        List<Card> cardsArray = beginnerCardDeck.getCardDeck();
-
-        HashMap<Integer, Integer[]> cardDeckMap = new HashMap<>();
-        cardDeckMap.put(cardsArray.get(0).getImageId(), new Integer[]{0, 0});
-        int secondCardIndex = 0;
-        for (int i = 1; i < cardsArray.size(); i++) {
-
-            if (cardDeckMap.containsKey(cardsArray.get(i).getImageId())) {
-                secondCardIndex = i;
-                cardDeckMap.put(cardsArray.get(i).getImageId(), new Integer[]{0, secondCardIndex});
-            }
-        }
-
-        boolean isEqual = cardsArray.get(0).equals(cardsArray.get(secondCardIndex));
-
-        assertTrue("The pair of cards is not equal", isEqual);
-    }
+//    @Test
+//    public void cardDeck_beginnerLevel_TwoConsecutiveCardsAreEqualInTheGeneratedCardsArray() {
+//        CardDeck beginnerCardDeck = new CardDeck(Level.BEGINNER);
+//        List<Card> cardsArray = beginnerCardDeck.getCardDeck();
+//
+//        HashMap<Integer, Integer[]> cardDeckMap = new HashMap<>();
+//        cardDeckMap.put(cardsArray.get(0).getImageId(), new Integer[]{0, 0});
+//        int secondCardIndex = 0;
+//        for (int i = 1; i < cardsArray.size(); i++) {
+//
+//            if (cardDeckMap.containsKey(cardsArray.get(i).getImageId())) {
+//                secondCardIndex = i;
+//                cardDeckMap.put(cardsArray.get(i).getImageId(), new Integer[]{0, secondCardIndex});
+//            }
+//        }
+//
+//        boolean isEqual = cardsArray.get(0).equals(cardsArray.get(secondCardIndex));
+//
+//        assertTrue("The pair of cards is not equal", isEqual);
+//    }
 
     /*@Test
     public void cardDeck_beginnerLevel_isValidDeck() {
