@@ -49,10 +49,10 @@ public class CardDeck {
 
     // methods
     private List<Card> generateCardDeck() throws NoSuchFieldException, IllegalAccessException {
-//        ArrayList<Integer> randomCardsIndexList = generateRandomIndexCardsList(this.deckSize / 2);
+        ArrayList<Integer> randomCardsIndexList = generateRandomIndexCardsList(this.deckSize / 2);
         for (int i = 0; i < this.deckSize / 2; i++) {
             for (int j = 0; j < 2; j++) {
-                Card card = new Card(getDrawableId(BACK_CARD_IMAGES[generateRandomCardIndex()]));
+                Card card = new Card(getDrawableId(BACK_CARD_IMAGES[i]));
                 cardDeck.add(card);
             }
         }
@@ -71,17 +71,17 @@ public class CardDeck {
         return R.drawable.class.getField(name).getInt(null);
     }
 
-//    private ArrayList<Integer> generateRandomIndexCardsList(int numOfPairs) {
-//        ArrayList<Integer> cardsIndexList = new ArrayList<>();
-//        int randomIndex = generateRandomCardIndex();
-//        while (cardsIndexList.size() < numOfPairs) {
-//            if (!cardsIndexList.contains(randomIndex)) {
-//                cardsIndexList.add(randomIndex);
-//            }
-//            randomIndex = generateRandomCardIndex();
-//        }
-//        return cardsIndexList;
-//    }
+    private ArrayList<Integer> generateRandomIndexCardsList(int numOfPairs) {
+        ArrayList<Integer> cardsIndexList = new ArrayList<>();
+        int randomIndex = generateRandomCardIndex();
+        while (cardsIndexList.size() < numOfPairs) {
+            if (!cardsIndexList.contains(randomIndex)) {
+                cardsIndexList.add(randomIndex);
+            }
+            randomIndex = generateRandomCardIndex();
+        }
+        return cardsIndexList;
+    }
 
     private int generateRandomCardIndex() {
         return (int) (Math.random() * BACK_CARD_IMAGES.length);
