@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Match It NOW</string>
+    <string name="card_inner_view">card inner image view</string>
 </resources>
